@@ -1,5 +1,6 @@
 import React from 'react';
 import { Categories, SortPopap, PizzaBlock } from '../components';
+import pizzas from '../assets/pizzas.json';
 
 function Home() {
   return (
@@ -13,9 +14,9 @@ function Home() {
       </div>
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">
-      
-          <PizzaBlock title="Вегетарианская" price={500}/>
-          
+        {pizzas.map((obj) => (
+          <PizzaBlock key={obj.id} {...obj}/>
+        ))}
       </div>
     </div>
   );

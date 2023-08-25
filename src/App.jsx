@@ -4,8 +4,7 @@ import { Header } from './components';
 import {Home, Cart} from './pages';
 import { Route, Routes } from 'react-router-dom';
 
-function App() {
-  
+function App() {  
 
   return (
     <div className="wrapper">
@@ -14,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} exact/>
           <Route path="/cart" element={<Cart/>} exact/>
+          
         </Routes>
       </div>
     </div>
