@@ -1,3 +1,42 @@
 https://www.youtube.com/watch?v=IMBAK-DftVM
 
 1:20:50 - в 2023 году пропала поддержка свойства path в ивенте, соответственно нельзя получить массив родительских div'ов. Решение - if (e.target.offsetParent !== sortRef.current)
+_______________________________
+
+В 2022 году нужно писать так , у кого ен работает Link  
+<NavLink to="/">
+          <div className="header__logo">
+            <img width="38" src={logo} alt="Pizza logo" />
+            <div>
+              <h1>React Pizza</h1>
+              <p>самая вкусная пицца во вселенной</p>
+            </div>
+          </div>{' '}
+        </NavLink>
+_________________________________
+
+1:50-1:53   
+<BrowserRouter>
+      <div className="wrapper">
+        <Header />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+
+          </Routes>
+        </div>
+      </div>
+    </BrowserRouter>
+
+____________________________________
+
+для react-Route 6
+  <Route path="/" element={<Home items={pizzas} />} />
+  <Route path="/cart" element={<Cart />} />
+
+____________________________________
+
+
+43 min
+57 min

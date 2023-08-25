@@ -301,6 +301,9 @@ a {
 .sort__label svg {
   margin-right: 8px;
 }
+.rotated{
+  transform: rotate(180deg);
+}
 .sort__label b {
   margin-right: 8px;
 }
