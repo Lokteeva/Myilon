@@ -50,4 +50,8 @@ spread-оператор:
 
 можно заменить на
 <PizzaBlock {...obj}/>
+________________________
+другой способ popup сортировки
 
+https://www.youtube.com/watch?v=_EiClUmTlNg&list=PL0FGkDGJQjJG9eI85xM1_iLIf6BcEdaNl&index=6
+___________________________

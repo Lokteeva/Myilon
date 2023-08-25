@@ -9,6 +9,10 @@ function PizzaBlock(props) {
     setActivType(index)
   }
 
+  const onClickSize = (index) =>{
+    setActivSize(index)
+  }
+
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={props.imageUrl} alt="Pizza" />
@@ -16,12 +20,12 @@ function PizzaBlock(props) {
       <div className="pizza-block__selector">
         <ul>
           {props.types.map((type) => (
-            <li key={type} onClick={()=> setActivType(type)} className={activeType === type ? 'active' : ''}>{typeName[type]}</li>
+            <li key={type} onClick={()=> onClickType(type)} className={activeType === type ? 'active' : ''}>{typeName[type]}</li>
           ))}
         </ul>
         <ul>
           {props.sizes.map((size, i) => (
-            <li key={size} onClick={()=> setActivSize(i)} className={activeSize === i ? 'active' : ''}>{size} см.</li>
+            <li key={size} onClick={()=> onClickSize(i)} className={activeSize === i ? 'active' : ''}>{size} см.</li>
           ))}
         </ul>
       </div>
