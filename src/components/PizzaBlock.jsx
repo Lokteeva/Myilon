@@ -1,27 +1,28 @@
 import React from 'react';
 
-function PizzaBlock({name, imageUrl, price}) {
+function PizzaBlock(props) {
+ 
   return (
     <div className="pizza-block">
     <img
       className="pizza-block__image"
-      src={imageUrl}
+      src="https://dodopizza.azureedge.net/static/Img/Products/Pizza/ru-RU/d48003cd-902c-420d-9f28-92d9dc5f73b4.jpg"
       alt="Pizza"
     />
-    <h4 className="pizza-block__title">{name}</h4>
+    <h4 className="pizza-block__title">{props.title}</h4>
     <div className="pizza-block__selector">
-      <ul>
-        <li className="active">тонкое</li>
-        <li>традиционное</li>
-      </ul>
-      <ul>
-        <li className="active">26 см.</li>
-        <li>30 см.</li>
-        <li>40 см.</li>
-      </ul>
+    <ul>
+      <li className="active">тонкое</li>
+      <li>традиционное</li>
+    </ul>
+    <ul>
+      <li className="active">26 см.</li >
+      <li>30 см.</li>
+      <li>40 см.</li>
+    </ul>
     </div>
     <div className="pizza-block__bottom">
-      <div className="pizza-block__price">от {price} ₽</div>
+      <div className="pizza-block__price">от {props.price} ₽</div>
       <div className="button button--outline button--add">
         <svg
           width="12"
@@ -35,7 +36,7 @@ function PizzaBlock({name, imageUrl, price}) {
           />
         </svg>
         <span>Добавить</span>
-        <i>2</i>
+        <i>1</i>
       </div>
     </div>
   </div>
