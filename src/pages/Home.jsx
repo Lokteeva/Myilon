@@ -32,9 +32,6 @@ function Home() {
            items.map((obj)=> <PizzaBlock key={obj.id} {...obj}/>)
         }
 
-        {items.map((obj) => (
-          <PizzaBlock key={obj.id} {...obj} />
-        ))}
       </div>
     </div>
   );
