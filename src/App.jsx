@@ -10,9 +10,9 @@ function App() {
       <Header />
       <div className="content">
         <Routes>
-          <Route path="/" element={<Home />} exact />
-          <Route path="/cart" element={<Cart />} exact />
-          <Route path="/notfound" element={<NotFound />} exact />
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </div>
