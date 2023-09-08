@@ -765,7 +765,8 @@ body {
   }
   .wrapper {
     width: calc(100vw - 30px);
-  }
+    margin-top: -35px;
+  } 
   
 }
 @media (max-width: 500px) {
