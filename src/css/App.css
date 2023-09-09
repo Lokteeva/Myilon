@@ -358,8 +358,6 @@ a {
   letter-spacing: 1%;
   margin-bottom: 20px;
 }
-.pizza-block__selector {
-}
 .pizza-block__selector ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -430,7 +428,10 @@ body {
   padding: 40px 0;
 }
 .content__title {
-  margin: 35px 0;
+  margin: 60px 50px;
+  font-weight: 800;
+  font-size: 38px;
+
 }
 .content__items {
   display: grid;
@@ -536,6 +537,9 @@ body {
   border-top: 1px solid #f6f6f6;
   padding-top: 30px;
   margin-top: 30px;
+}
+.cart .content__items{
+  display: block;
 }
 .cart__item-img {
   display: -webkit-box;
