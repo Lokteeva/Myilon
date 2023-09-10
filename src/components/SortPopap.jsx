@@ -1,12 +1,9 @@
 import React from 'react'
 
-function SortPopap({items}) {
+function SortPopap({items, value, onChangeSort}) {
 
   const [visiblePopup, setVisiblePopup] = React.useState(false);
   const sortRef = React.useRef();
-  const [activeItem, setActiveItem] = React.useState(0);
-  const activeLable = items[activeItem];
-
 
   const toggleVisiblePopup = () => {
     setVisiblePopup(!visiblePopup);
@@ -23,7 +20,7 @@ function SortPopap({items}) {
   },[]);
 
   const onSelectItem = (index) => {
-    setActiveItem (index);
+    onChangeSort (index);
     setVisiblePopup(false);
   };  
 
@@ -43,17 +40,17 @@ function SortPopap({items}) {
         />
       </svg>
       <b>Сортировка по:</b>
-      <span onClick={toggleVisiblePopup}>{activeLable}</span>
+      <span onClick={toggleVisiblePopup}>{value.name}</span>
     </div>
     {visiblePopup && <div className="sort__popup">
       <ul>
       {items &&
-        items.map((name, index) => (
+        items.map((obj, index) => (
           <li
-            className={activeItem === index ? 'active' : ''}
-            onClick={() => onSelectItem(index)}
-            key={`${name}_${index}`}>
-            {name}
+            className={value.sortProperty === obj.sortProperty ? 'active' : ''}
+            onClick={() => onSelectItem(obj)}
+            key={`${obj}_${index}`}>
+            {obj.name}
           </li>
         ))}
       </ul>
