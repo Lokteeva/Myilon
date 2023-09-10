@@ -2,11 +2,15 @@ import React from 'react';
 import { Categories, SortPopap, PizzaBlock } from '../components';
 // import pizzas from '../assets/pizzas.json';
 import Skeleton from '../components/PizzaBlock/Skeleton';
+import Pagination from '../components/Pagination/index';
+import { SearchContext } from '../App';
 
-function Home({searchValue}) {
+const Home = ()=> {
+  const {searchValue} = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [categoryId, setCategoryId] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
   const [sortType, setSortType] = React.useState({
     name: 'популярности',
     sortProperty: 'rating',
@@ -20,11 +24,10 @@ function Home({searchValue}) {
     const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
     const sortBy = sortType.sortProperty.replace('-', '');
     const category = categoryId > 0 ? `category=${categoryId}` : '';
+    const search = searchValue ? `&search=${searchValue}` : '';
 
     fetch(
-      `https://64eb3e98e51e1e82c57722ed.mockapi.io/pizzas?${
-        category
-      }&sortBy=${sortBy}&order=${order}`,
+      `https://64eb3e98e51e1e82c57722ed.mockapi.io/pizzas?page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${order}${search}`,
     )
       .then((res) => res.json())
       .then((arr) => {
@@ -32,15 +35,9 @@ function Home({searchValue}) {
         setIsLoading(false);
       });
     window.scrollTo(0, 0);
-  }, [categoryId, sortType]);
+  }, [categoryId, sortType, searchValue, currentPage]);
 
-  const pizzas = items.filter(obj =>{
-    if(obj.name.toLowerCase().includes(searchValue.toLowerCase())){
-      return true;
-    }
-
-    return false;
-  }).map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+  const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
   const skeletons = [...new Array(10)].map((_, index) => <Skeleton key={index} />);
 
   return (
@@ -66,10 +63,9 @@ function Home({searchValue}) {
         />
       </div>
       <h2 className="content__title">Все пиццы</h2>
-      <div className="content__items">
-        {isLoading
-          ? skeletons : pizzas}
-      </div>
+      <div className="content__items">{isLoading ? skeletons : pizzas}</div>
+
+      <Pagination onChangePage={(number)=>setCurrentPage(number)}/>
     </div>
   );
 }
