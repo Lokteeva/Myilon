@@ -15,9 +15,9 @@ const Search = ()=> {
         <circle
           fill="none"
           stroke="#000000"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-miterlimit="10"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeMiterlimit="10"
           cx="21"
           cy="20"
           r="16"
@@ -25,8 +25,8 @@ const Search = ()=> {
         <line
           fill="none"
           stroke="#000000"
-          stroke-width="4"
-          stroke-miterlimit="10"
+          strokeWidth="4"
+          strokeMiterlimit="10"
           x1="32.229"
           y1="32.229"
           x2="45.5"
