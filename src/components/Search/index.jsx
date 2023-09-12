@@ -1,9 +1,32 @@
 import React from 'react';
 import styles from './search.module.css';
 import { SearchContext } from '../../App';
+import debounce from 'lodash.debounce';
 
-const Search = ()=> {
-  const {searchValue, setSearchValue} = React.useContext(SearchContext)
+const Search = () => {
+  const [value, setValue] = React.useState('');
+  const { setSearchValue } = React.useContext(SearchContext);
+  const inputRef = React.useRef();
+
+  const onClickClear = () => {
+    setSearchValue('');
+    setValue('');
+    //document.querySelector('input').focus();
+    inputRef.current.focus();
+  };
+
+  const updateSearchValue = React.useCallback(
+    debounce((str) => {
+      setSearchValue(str);
+    }, 500),
+    [],
+  );
+
+  const onChangeInput = (event) => {
+    setValue(event.target.value);
+    updateSearchValue(event.target.value);
+  };
+
   return (
     <div className={styles.root}>
       <svg
@@ -34,13 +57,46 @@ const Search = ()=> {
         />
       </svg>
 
-      <input value={searchValue} onChange={(event)=> setSearchValue(event.target.value)} className={styles.input} placeholder="Поиск пиццы ..." />
+      <input
+        ref={inputRef}
+        value={value}
+        onChange={onChangeInput}
+        className={styles.input}
+        placeholder="Поиск пиццы ..."
+      />
 
-      {searchValue &&(
-        <svg onClick={()=> setSearchValue('')} className={styles.closeIcon} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="50px" height="50px"><line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="7" y1="7" x2="43" y2="43"/><line fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" x1="43" y1="7" x2="7" y2="43"/></svg>
+      {value && (
+        <svg
+          onClick={onClickClear}
+          className={styles.closeIcon}
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 50 50"
+          width="50px"
+          height="50px">
+          <line
+            fill="none"
+            stroke="#000000"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            x1="7"
+            y1="7"
+            x2="43"
+            y2="43"
+          />
+          <line
+            fill="none"
+            stroke="#000000"
+            strokeWidth="2"
+            strokeMiterlimit="10"
+            x1="43"
+            y1="7"
+            x2="7"
+            y2="43"
+          />
+        </svg>
       )}
     </div>
   );
-}
+};
 
 export default Search;

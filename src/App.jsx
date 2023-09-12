@@ -3,8 +3,6 @@ import './css/App.css';
 import { Header } from './components';
 import { Home, Cart, NotFound } from './pages';
 import { Route, Routes } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from './redux/slices/filterSlice'
 
 export const SearchContext = React.createContext();
 
