@@ -1,9 +1,7 @@
 import React from 'react';
 
 function Categories({ items, value, onChangeCategory }) {
-  console.log(value);
-   
-
+  
   return (
     <div className="categories">
       <ul>       

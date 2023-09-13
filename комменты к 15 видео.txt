@@ -1,0 +1,5 @@
+В январе 2023 свойство path удалили из веб апи. Вместо этого пишите composedPath()
+
+Если еще актуально, то попробуй глянуть пропсы CartItem, должно быть так const CartItem = (props) => {
+    const {id, title, type, price, count, imageUrl } = props 
+была такая же ошибка, после этого заработало
