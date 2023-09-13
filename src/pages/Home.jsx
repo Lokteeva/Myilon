@@ -6,6 +6,7 @@ import Skeleton from '../components/PizzaBlock/Skeleton';
 import Pagination from '../components/Pagination/index';
 import { SearchContext } from '../App';
 import { useDispatch, useSelector } from 'react-redux';
+<<<<<<< HEAD
 import { setCategoryId, setCurrentPage, setFilters } from '../redux/slices/filterSlice';
 import qs from 'qs';
 import { useNavigate } from 'react-router-dom';
@@ -18,10 +19,21 @@ const Home = () => {
   const isMounted = React.useRef(false);
 
   const { categoryId, sort, currentPage } = useSelector((state) => state.filter);
+=======
+import { setCategoryId } from '../redux/slices/filterSlice';
+
+const Home = () => {
+  const dispatch = useDispatch();
+  const { categoryId, sort } = useSelector((state) => state.filter);
+>>>>>>> fc08b5cc2c7445d79edcab2c5c946ff29c1b1c0f
 
   const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
+<<<<<<< HEAD
+=======
+  const [currentPage, setCurrentPage] = React.useState(1);
+>>>>>>> fc08b5cc2c7445d79edcab2c5c946ff29c1b1c0f
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -56,6 +68,7 @@ const Home = () => {
         setIsLoading(false);
       });
     window.scrollTo(0, 0);
+<<<<<<< HEAD
   };
 
   //Если изменили пераметры и был первый рендер, то изменяем url
@@ -101,6 +114,9 @@ const Home = () => {
   }, [categoryId, sort.sortProperty, searchValue, currentPage]);
 
  
+=======
+  }, [categoryId, sort.sortProperty, searchValue, currentPage]);
+>>>>>>> fc08b5cc2c7445d79edcab2c5c946ff29c1b1c0f
 
   const pizzas = items.map((obj) => <PizzaBlock key={obj.id} {...obj} />);
   const skeletons = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
@@ -122,7 +138,11 @@ const Home = () => {
       <h2 className="content__title">Все пиццы</h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
 
+<<<<<<< HEAD
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
+=======
+      <Pagination onChangePage={(number) => setCurrentPage(number)} />
+>>>>>>> fc08b5cc2c7445d79edcab2c5c946ff29c1b1c0f
     </div>
   );
 };
